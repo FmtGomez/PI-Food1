@@ -8,7 +8,7 @@ const router = Router();
 const getapiInfo = async ()=>{
     
     try{
-        const apiInfoUrl = await axios.get(`${spoonacularUrl}/recipes/complexSearch?apyKey=${APY_KEY}&addRecipeInformation=true&number=100`);
+        const apiInfoUrl = await axios.get(`${spoonacularUrl}/recipes/complexSearch?apiKey=${APY_KEY}&addRecipeInformation=true&number=100`);
         const {results} = apiInfoUrl.data
         let apiInfo = await results?.map(response =>{
             return{
@@ -171,7 +171,7 @@ router.get("/", async (req,res,next)=>{
 router.get("/:id", async(req,res,next)=>{
     try{
         let {id} = req.params;
-        if(id.length > 11){
+        if(typeof id ==="string" && id.length > 10){
             const dbData = await Recipe.findByPk(id,{
                 include:{
                     model: Diet,
