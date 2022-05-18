@@ -3,6 +3,7 @@ export const GET_RECIPES = "GET_RECIPES";
 export const GET_RECIPE_NAME = "GET_RECIPE_NAME";
 export const GET_TYPE_DIET = "GET_TYPE_DIET";
 export const GET_DETAILS_RECIPE = "GET_DETAILS_RECIPE";
+export const ADD_RECIPE = "ADD_RECIPE";
 export const FILTER_TYPE_DIET = "FILTER_TYPE_DIET";
 export const ORDER_ALPHABETIC = "ORDER_ALPHABETIC";
 export const ORDER_SCORE = "ORDER_SCORE";
@@ -13,7 +14,7 @@ export function getRecipes() {
         axios.get(`${LOCAL_HOST}/recipes`)
         .then(response =>{
             return dispatch({
-                tipe: GET_RECIPES,
+                type: GET_RECIPES,
                 payload: response.data
             })
         }).catch((error)=>{
@@ -42,7 +43,7 @@ export function detailsRecipe(id){
             let response = await axios.get(`${LOCAL_HOST}/recipes/${id}`);
             return dispatch({
                 type: GET_DETAILS_RECIPE,
-                payload: response.data
+                payload: response.data[0]
             });
         }catch(error){
             console.log(error)
@@ -72,7 +73,7 @@ export function getRecipeName(name){
 export function addRecipe(payload){
     return async function(){
         try{
-            let response = await axios.get(`${LOCAL_HOST}/recipe`, payload);
+            let response = await axios.post(`${LOCAL_HOST}/recipe`, payload);
             return response
         }catch(error){
             console.log(error)
@@ -89,16 +90,16 @@ export function filterTypeDiet(payload){
     };
 };
 
-export function orderAlphabetic(payload){
+export function orderAlphabetic(order){
     return {
         type: ORDER_ALPHABETIC,
-        payload
+        payload: order
     };
 };
 
-export function orderScore(payload){
+export function orderScore(score){
     return {
         type: ORDER_SCORE,
-        payload
+        payload: score
     };
 };

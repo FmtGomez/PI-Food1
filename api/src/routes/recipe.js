@@ -12,14 +12,18 @@ const router = Router();
 router.post("/", async(req,res,next)=>{
 
     try{
-        const { name,summary,score,healthScore,steps,dietTypes} = req.body;
+        const { name,summary,score,healthScore,steps,dietTypes,image,} = req.body;
         const newRecipe = await Recipe.create({
-            name,summary,score,healthScore,steps
+            name,summary,score,healthScore,steps,image
         });
-        let dietTypesRecipeDb = await Diet.findAll({
-            where: {name:dietTypes}
-        });
+        
+         let dietTypesRecipeDb = await Diet.findAll({
+             where: {name:dietTypes}
+         });
+         
+         
         newRecipe.addDiet(dietTypesRecipeDb);
+        console.log(newRecipe)
         res.send(newRecipe);
     }catch(error){
         next(error)

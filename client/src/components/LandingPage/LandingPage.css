@@ -1,0 +1,17 @@
+
+
+.LandingPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding-top: 100px;
+    padding-bottom: 707px;  
+} 
+
+.title{
+    color: #3700fc;
+}
+.text{
+    color: #3700fc;
+    font-size: 20px;
+}
