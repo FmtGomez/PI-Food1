@@ -42,35 +42,37 @@ export default function Home() {
     // console.log(recipes)
 
     return (
-        <div>
-            <nav>
-                <div>
+        <div className="divgral">
+            <nav className="nav">
+                <div className="searchBar">
                     <SearchBar />
-                    <div>
-                    <Link to="/recipe"><button>Create Recipe</button> </Link>
-                    </div>
-                    
                 </div>
-                <div>
+                <div className="orderAlpha">
                     <OrderAlpha />
                 </div>
-                <div>
+                <div className="orderScore">
                     <OrderScore />
                 </div>
-                <div>
+                <div className="dietFilter">
                     <DietFilter />
+                </div>
+                <div>
+                    <Link to="/recipe"><button className="button">Create Recipe</button> </Link>
                 </div>
 
             </nav>
             <div>
                 <Paged recipes={recipes.length} recipesPage={recipesPage} paged={paged} />
             </div>
-            {showRecipesPage?.map(recipe => {
-                return <Link to={"/home/" + recipe.id} key={key++}>
-                    <Recipe name={recipe.name} image={recipe.image} dietType={recipe.dietTypes ? recipe.dietTypes : recipe.diets?.map(el => el.name)} score={recipe.score} key={key++} />
-                </Link>
+            <div className="recipes">
+                {showRecipesPage?.map(recipe => {
+                    return <Link to={"/home/" + recipe.id} key={key++}>
+                        <Recipe name={recipe.name} image={recipe.image} dietType={recipe.dietTypes ? recipe.dietTypes : recipe.diets?.map(el => el.name)} score={recipe.score} key={key++} />
+                    </Link>
 
-            })}
+                })}
+
+            </div>
         </div>
     )
 };

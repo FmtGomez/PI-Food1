@@ -4,7 +4,7 @@ import "../LandingPage/LandingPage.css"
 
 export default function LandingPage() {
     return (
-        <div >
+        <div className="divGral" >
 
             <div className="LandingPage">
                 <div>

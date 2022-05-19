@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { detailsRecipe } from "../../redux/actions/index.js";
-
+import "../DetailRecipe/DetailRecipe.css"
 
 
 export default function DetailRecipe(props){
@@ -21,28 +21,28 @@ export default function DetailRecipe(props){
 
 
     return(
-        <div>
+        <div className="div">
             {/* {console.log(recipeDetails.map(el =>el))} */}
                 {/* {console.log(recipeDetails)} */}
         
             <nav>
-                <Link to={"/home"}><button>Go Back To Home</button></Link>
+                <Link to={"/home"}><button className="button">Go Back To Home</button></Link>
             </nav>
-            <div>          
+            <div className="namedetail">          
                 <h2>{recipeDetails.name}</h2>
 
             </div>
 
             <div>
-                <img src={recipeDetails.image } alt="img" />
+                <img className="imge" src={recipeDetails.image } alt="img" />
             </div>
 
-            <div>
+            <div className="namedetail">
                 <h3>Summary</h3>
                 <p>{recipeDetails?.summary?.replace(/<[^>]*>/g, '')}</p>
             </div>
 
-            <div>
+            <div className="namedetail">
                
                 <h3>Steps</h3>
                 
@@ -57,10 +57,11 @@ export default function DetailRecipe(props){
                 
            
             </div>
-            <div>
+            <div className="prueba">
+            <div className="namedetail">
                 <h3>Health Score: {recipeDetails.healthScore} </h3> 
             </div>
-            <div>
+            <div className="namedetail">
                 { recipeDetails.dishType?.map(el =>{
                     return(
                         <h3>Dish Type : {el}</h3>
@@ -68,14 +69,16 @@ export default function DetailRecipe(props){
                 })}
             </div>
 
-            <div>
+            <div className="namedetail">
                 <h3>Score : {recipeDetails.healthscore}</h3>
             </div>
 
-            <div>
+            <div className="namedetail">
                 <h3>Diet Types</h3>
                {recipeDetails.dietTypes?.map(el=> <li key={key++}>{el.name?el.name:el}</li>)}
              
+            </div>
+
             </div>
 
         </div>

@@ -1,11 +1,13 @@
 
-
+.divGral{
+    background: url(../../img/img.jpg) no-repeat center
+}
 .LandingPage{
     display: flex;
     flex-direction: column;
     align-items: center; 
     padding-top: 100px;
-    padding-bottom: 707px;  
+    padding-bottom: 685px;  
 } 
 
 .title{
@@ -14,4 +16,17 @@
 .text{
     color: #3700fc;
     font-size: 20px;
+}
+
+.homeButton{
+    border-radius: 5px;
+    color: #5412ea;
+    width: 100px;
+    height: 30px;
+    background-color: #00000047
+
+}
+.homeButton:hover{
+    color: #fff;
+    background-color: gray;
 }

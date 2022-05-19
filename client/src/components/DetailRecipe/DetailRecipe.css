@@ -1,0 +1,28 @@
+.div{
+    
+    background: url(../../img/img.jpg) no-repeat center;
+    background-attachment: fixed;
+    height: 1200px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.namedetail{
+    color:  rgb(115, 0, 247);
+    
+}
+.imge{
+    box-sizing: content-box;
+    width: 100%;
+}
+
+.prueba{
+    display: flex;
+    width: 500px;
+    
+}
+
+li{
+    list-style: none;
+}

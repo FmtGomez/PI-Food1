@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addRecipe, getDiets, getRecipes } from "../../redux/actions";
-
+import "../AddRecipe/AddRecipe.css"
 
 function validate (input){
     const patron = new RegExp('^[ñíóáéú a-zA-Z ]+$')
@@ -112,13 +112,13 @@ export default function AddRecipe(){
 
 
     return(
-        <div>
+        <div className="divGral">
         {/* {console.log(diets)} */}
-            <Link to={"/home"}> <button>Go Back To Home</button> </Link>
-            <h2>Create your Recipe</h2>
+            <Link to={"/home"}> <button className="button">Go Back To Home</button> </Link>
+            <h2 className="h2">Create your Recipe</h2>
 
-            <form onSubmit={e => handleSubmit(e)}>
-                <div>
+            <form className="form" onSubmit={e => handleSubmit(e)}>
+                <div className="prueba12">
                     <label>Name:</label>
                     <input
                         type="text"
@@ -130,7 +130,7 @@ export default function AddRecipe(){
                         <p className="errors">{errors.name}</p>
                     )}
                 </div>
-                <div>
+                <div className="prueba12">
                     <label>Image:</label>
                     <input
                         type="text"
@@ -142,7 +142,7 @@ export default function AddRecipe(){
                         <p className="errors">{errors.image}</p>
                     )}
                 </div>
-                <div>
+                <div className="prueba1">
                     <label>Summary:</label>
                     <input
                         type="text"
@@ -154,7 +154,7 @@ export default function AddRecipe(){
                         <p className="errors">{errors.summary}</p>
                     )}
                 </div>
-                <div>
+                <div className="prueba12">
                     <label>Score:</label>
                     <input
                         type="text"
@@ -166,7 +166,7 @@ export default function AddRecipe(){
                         <p className="errors">{errors.score}</p>
                     )}
                 </div>
-                <div>
+                <div className="prueba2">
                     <label>Health Score:</label>
                     <input
                         type="text"
@@ -178,7 +178,7 @@ export default function AddRecipe(){
                         <p className="errors">{errors.healthScore}</p>
                     )}
                 </div>
-                <div >
+                <div className="prueba12" >
                     <label>Steps:</label>
                     <input
                         type="text"
@@ -198,8 +198,9 @@ export default function AddRecipe(){
                     
                     {diets.map(el =>{
                         return(
-                            <div>
+                            <div className="types">
                             <label>{el}</label>
+                            <div className="types1">
                             <input 
                                 type="checkbox"  
                                 name={el}
@@ -207,6 +208,10 @@ export default function AddRecipe(){
                                 selected ={input.dietTypes.includes(el)}
                                 onChange={e=> handleCheckBox(e)}
                             />
+
+                            </div>
+
+                            
                             </div>
                         )
                     })}
@@ -219,12 +224,12 @@ export default function AddRecipe(){
 
                     {((input.name !== '') && (!errors.name) && (input.summary !=='')) ?
                          
-                             <button type='submit'>Create</button>
+                             <button className="buttonEnd" type='submit'>Create</button>
                               :  input.name === ''? <p>Name is require</p>
                               :  <p>Summary is require</p>
                       }
                   </div> 
-                <Link to="/home"><button>Go back to home</button></Link>
+                {/* <Link to="/home"><button className="button">Go back to home</button></Link> */}
 
             </form>
 

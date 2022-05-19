@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getRecipeName } from "../../redux/actions";
+import "../SearchBar/SearchBar.css"
 
 
 export function SearchBar(){
@@ -23,7 +24,7 @@ export function SearchBar(){
         <div>
             <form onSubmit={onSubmit}>
             <input type="text" onChange={onInputChange} value={search}/>
-            <input type="submit" value="Buscar" />
+            <input className="buscar" type="submit" value="Buscar" />
             </form>
         </div>
     )

@@ -1,0 +1,78 @@
+.divGral{
+    background: url(../../img/img.jpg) no-repeat center;
+    background-attachment: fixed;
+    height: 1000px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.button{
+    border-radius: 5px;
+    color: #5412ea;
+    width: 100px;
+    margin-top: 10px;
+    height: 50px;
+    font-size: 20px;
+    background-color: #00000047;
+}
+
+.button:hover{
+    color: #fff;
+    background-color: gray;
+    cursor: pointer;
+}
+.form{
+    align-items: center;
+    background-color: #5312eab9;
+    width: 450px;
+}
+
+.h2{
+    color: rgb(115, 0, 247);
+}
+
+.prueba12{
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.prueba1{
+    margin-left: -25px;
+    margin-bottom: 5px;
+}
+.prueba2{
+    margin-left: -50px;
+    margin-bottom: 5px;
+}
+
+.errors{
+    
+    
+    color: rgb(248, 4, 4);
+}
+
+.types{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 180px;
+
+}
+
+.buttonEnd{
+    border-radius: 5px;
+    color: #260672;
+    width: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 50px;
+    font-size: 20px;
+    background-color: #00000047;
+}
+.buttonEnd:hover{
+    color: #fff;
+    background-color: gray;
+    cursor: pointer;
+}
