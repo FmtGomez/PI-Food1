@@ -6,7 +6,7 @@ import { DietFilter } from "../DietFilter/DietFilter";
 import { OrderAlpha } from "../OrderAlphabetic/OrderAlphabetic.js";
 import { OrderScore } from "../OrderScore/OrderScore.js";
 import Recipe from "../Recipe/Recipe.js";
-import { SearchBar } from "../SearchBar/SearchBar.js";
+import  {SearchBar}  from "../SearchBar/SearchBar.js";
 import { Paged } from "../Paged/Paged.js";
 import { Link } from "react-router-dom";
 import "../Home/Home.css"
@@ -21,12 +21,12 @@ export default function Home() {
 
     //paginado
 
-    const [page, setPage] = useState(1);
-    const [recipesPage] = useState(9);
+    const [page, setPage] = useState(1);//pagina actual
+    const [recipesPage] = useState(9);//cantidad de recetas por pagina
 
-    const quantityRecipePage = page * recipesPage;
-    const firstRecipePage = quantityRecipePage - recipesPage;
-    const showRecipesPage = recipes.slice(firstRecipePage, quantityRecipePage);
+    const quantityRecipePage = page * recipesPage; // indice de mi ultima receta de la pagina
+    const firstRecipePage = quantityRecipePage - recipesPage;//indice de la primer receta de la pagina
+    const showRecipesPage = recipes.slice(firstRecipePage, quantityRecipePage);// slice toma una parte del arreglo segun parametros (del 1 al 9)
 
     const paged = function (pageNumber) {
         setPage(pageNumber);
@@ -66,9 +66,9 @@ export default function Home() {
             </div>
             <div className="recipes">
                 {showRecipesPage?.map(recipe => {
-                    return <Link to={"/home/" + recipe.id} key={key++}>
-                        <Recipe name={recipe.name} image={recipe.image} dietType={recipe.dietTypes ? recipe.dietTypes : recipe.diets?.map(el => el.name)} score={recipe.score} key={key++} />
-                    </Link>
+                    return  <Recipe id={recipe.id} name={recipe.name} image={recipe.image} dietType={recipe.dietTypes ? recipe.dietTypes : recipe.diets?.map(el => el.name)} score={recipe.score} key={key++} />
+                         {/* <Link to={"/home/" + recipe.id} key={key++}>
+                         </Link>) */}
 
                 })}
 

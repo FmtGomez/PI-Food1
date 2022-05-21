@@ -7,6 +7,7 @@ export const ADD_RECIPE = "ADD_RECIPE";
 export const FILTER_TYPE_DIET = "FILTER_TYPE_DIET";
 export const ORDER_ALPHABETIC = "ORDER_ALPHABETIC";
 export const ORDER_SCORE = "ORDER_SCORE";
+export const REMOVE = "REMOVE"
 export const LOCAL_HOST = "http://localhost:3001/api";
 
 export function getRecipes() {
@@ -101,5 +102,12 @@ export function orderScore(score){
     return {
         type: ORDER_SCORE,
         payload: score
+    };
+};
+
+export function remove(id){
+    return{
+        type: REMOVE,
+        payload:id
     };
 };

@@ -29,7 +29,7 @@ export function DietFilter(){
                 <option value="fodmap friendly">low fodmap</option>
                 <option value="whole 30">whole 30</option>
                 <option value="dairy free">dairy free</option>
-                <option value="lacto ovo vegetarian">lacto ovo vegetarian</option>
+                <option value="lacto ovo ">lacto ovo vegetarian</option>
             </select>
         </div>
     )

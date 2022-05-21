@@ -1,4 +1,4 @@
-import { GET_RECIPES,GET_TYPE_DIET,GET_DETAILS_RECIPE,ADD_RECIPE,GET_RECIPE_NAME,FILTER_TYPE_DIET,ORDER_ALPHABETIC,ORDER_SCORE} from "../actions";
+import { GET_RECIPES,GET_TYPE_DIET,GET_DETAILS_RECIPE,ADD_RECIPE,GET_RECIPE_NAME,FILTER_TYPE_DIET,ORDER_ALPHABETIC,ORDER_SCORE, REMOVE} from "../actions";
 
 
 const initialState ={
@@ -71,21 +71,39 @@ export function rootReducer(state = initialState,action){
                 
                 case FILTER_TYPE_DIET:
                     let allbyRecipes = state.allRecipes;
-                    //console.log(action.payload)
+                    //console.log(state.allRecipes)
                     let dietFilter = action.payload === "all"? allbyRecipes?allbyRecipes:null: allbyRecipes.filter(x => x.dietTypes?.some(d => d.name? d.name === action.payload: d ===action.payload))
                     
-                    //let dietFilterDb =  action.payload === "all"? allbyRecipes: allbyRecipes.filter(x => x.diets?.some(d => d.name === action.payload))
-                    // let array =[]
-                    // for(let i = 0; i< dietFilter.length;i++){
-                    //     if( dietFilter[i].vegetarian === true){
-                    //         array.push(dietFilter[i])
-                    //     }
-                    // }
-                    //let finalFilter = dietFilter.concat(dietFilterDb) 
-                    let finalFilter = dietFilter
+
+                    let array =[]
+                    for(let i = 0; i< allbyRecipes.length;i++){
+                        if( allbyRecipes[i].vegetarian === true){
+                            array.push(allbyRecipes[i])
+                        }
+                    }
+
+                    
+                    let finalFilter = []
+                    dietFilter.forEach(el =>{
+                        if(!array.includes(el)){
+                            finalFilter.push(el)
+                        }
+                    });
+                    array.forEach(el=>{
+                        if(!dietFilter.includes(el)){
+                            finalFilter.push(el)
+                        }
+                    });
+
                     return{
                         ...state,
-                        recipes: finalFilter
+                        recipes: action.payload === "all"?dietFilter: finalFilter
+                    };
+                
+                case REMOVE:
+                    return{
+                        ...state,
+                        recipes: state.recipes.filter(el => el.id !== action.payload)
                     }
             default:
                 return state

@@ -12,6 +12,9 @@
     color:  rgb(115, 0, 247);
     
 }
+.imgdiv{
+    width: 350px;
+}
 .imge{
     box-sizing: content-box;
     width: 100%;
