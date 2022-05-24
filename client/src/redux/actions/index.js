@@ -8,6 +8,7 @@ export const FILTER_TYPE_DIET = "FILTER_TYPE_DIET";
 export const ORDER_ALPHABETIC = "ORDER_ALPHABETIC";
 export const ORDER_SCORE = "ORDER_SCORE";
 export const REMOVE = "REMOVE"
+export const CREATED = "CREATED"
 export const LOCAL_HOST = "http://localhost:3001/api";
 
 export function getRecipes() {
@@ -47,7 +48,7 @@ export function detailsRecipe(id){
                 payload: response.data[0]
             });
         }catch(error){
-            console.log(error)
+            return alert("Recipe not found")
         };
     };
 };
@@ -67,6 +68,7 @@ export function getRecipeName(name){
         };
     };
 };
+
 
 
 
@@ -105,9 +107,6 @@ export function orderScore(score){
     };
 };
 
-export function remove(id){
-    return{
-        type: REMOVE,
-        payload:id
-    };
-};
+
+
+

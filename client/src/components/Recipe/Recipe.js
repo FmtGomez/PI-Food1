@@ -24,10 +24,9 @@ export default function Recipe({ name, image, dietType, score,id}) {
 
             <div className="dietTypes">
                 {dietType?.map(el => <li key={key++}>{el.name ? el.name : el}</li>)}
-            </div>
-            <div className="dietTypes">
                 <p >{`Score: ${score}`}</p>
             </div>
+           
         </div>
     )
 }

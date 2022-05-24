@@ -11,13 +11,18 @@
 .namedetail{
     color:  rgb(115, 0, 247);
     
+    
 }
 .imgdiv{
     width: 350px;
+   
+    
 }
 .imge{
     box-sizing: content-box;
     width: 100%;
+    border: 5px solid rgba(116, 11, 214, 0.555);
+    border-radius: 10px;
 }
 
 .prueba{

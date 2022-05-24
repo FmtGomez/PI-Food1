@@ -9,10 +9,19 @@
     
     
 }
+.buttonprueba1:focus{
+    background-color: rgb(103 44 239);  
+}
+.buttonprueba:focus{
+    background-color: rgb(103 44 239);  
+}
+
+
 
 .li:hover{
     transform: scale(1,02);
 }
-.li:active{
-    transform: scale(1,02)
+.li:focus{
+    border-color: #736b5e;
+    color: #e8e6e3;
 }

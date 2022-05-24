@@ -12,8 +12,8 @@ export  function OrderAlpha(){
     return(
         <div>
             <select name="select" onChange={onSelectChange}>
-                <option value="ascendente">ascendente</option>
-                <option value="descendente">descendente</option>
+                <option value="ascendente">A to Z</option>
+                <option value="descendente">Z to A</option>
             </select>
         </div>
     )

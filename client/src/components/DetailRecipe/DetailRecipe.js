@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { detailsRecipe, remove } from "../../redux/actions/index.js";
+import { detailsRecipe } from "../../redux/actions/index.js";
 import "../DetailRecipe/DetailRecipe.css"
 
 
@@ -9,7 +9,7 @@ export default function DetailRecipe(props){
     
     let key = 1
     const recipeDetails = useSelector(state =>state.recipeDetail)
-    console.log(props)
+  
     const id = props.match.params.id
    
     const dispatch = useDispatch();
@@ -21,17 +21,18 @@ export default function DetailRecipe(props){
 
 
     return(
+        
         <div className="div">
             {/* {console.log(recipeDetails.map(el =>el))} */}
                 {/* {console.log(recipeDetails)} */}
     
-                
+            
             <nav>
                 <Link to={"/home"}><button className="button">Go Back To Home</button></Link>
             </nav>
+            
             <div className="namedetail">          
                 <h2>{recipeDetails.name}</h2>
-
             </div>
 
             <div className="imgdiv">

@@ -23,7 +23,7 @@ router.post("/", async(req,res,next)=>{
          
          
         newRecipe.addDiet(dietTypesRecipeDb);
-        console.log(newRecipe)
+        //console.log(newRecipe)
         res.send(newRecipe);
     }catch(error){
         next(error)

@@ -1,4 +1,4 @@
-import { GET_RECIPES,GET_TYPE_DIET,GET_DETAILS_RECIPE,ADD_RECIPE,GET_RECIPE_NAME,FILTER_TYPE_DIET,ORDER_ALPHABETIC,ORDER_SCORE, REMOVE} from "../actions";
+import { GET_RECIPES,GET_TYPE_DIET,GET_DETAILS_RECIPE,ADD_RECIPE,GET_RECIPE_NAME,FILTER_TYPE_DIET,ORDER_ALPHABETIC,ORDER_SCORE, REMOVE, CREATED} from "../actions";
 
 
 const initialState ={
@@ -40,10 +40,10 @@ export function rootReducer(state = initialState,action){
             case ORDER_ALPHABETIC:
                 let orderRecipe = [...state.recipes]
                 orderRecipe = orderRecipe.sort((a,b)=>{
-                    if(a.name < b.name){
+                    if(a.name.toLowerCase() < b.name.toLowerCase()){
                         return action.payload ==="ascendente"? -1 : 1;
                     }
-                    if(a.name > b.name){
+                    if(a.name.toLowerCase() > b.name.toLowerCase()){
                         return action.payload ==="ascendente"? 1 : -1;
                     }
                     return 0;
@@ -71,7 +71,6 @@ export function rootReducer(state = initialState,action){
                 
                 case FILTER_TYPE_DIET:
                     let allbyRecipes = state.allRecipes;
-                    //console.log(state.allRecipes)
                     let dietFilter = action.payload === "all"? allbyRecipes?allbyRecipes:null: allbyRecipes.filter(x => x.dietTypes?.some(d => d.name? d.name === action.payload: d ===action.payload))
                     
 
@@ -97,14 +96,9 @@ export function rootReducer(state = initialState,action){
 
                     return{
                         ...state,
-                        recipes: action.payload === "all"?dietFilter: finalFilter
+                        recipes: action.payload==="vegetarian"? finalFilter: dietFilter
                     };
                 
-                case REMOVE:
-                    return{
-                        ...state,
-                        recipes: state.recipes.filter(el => el.id !== action.payload)
-                    }
             default:
                 return state
     }

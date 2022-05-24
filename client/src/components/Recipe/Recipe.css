@@ -7,6 +7,12 @@
     object-fit: contain;
     
 }
+.card:hover{
+    border: 5px solid rgba(96, 6, 241, 0.548);
+    width: 360px;
+    height: 480px;
+    transition: 0.5s;
+}
 .img{
     border: solid 2px black;
     margin: 4px;
@@ -16,9 +22,11 @@
 
 .name{
     color: rgb(0, 58, 247);
+    margin-top: -0;
 }
 .dietTypes{
     color: rgb(0, 58, 247);
+    margin-top: -20px;
 }
 
 a{

@@ -13,6 +13,8 @@ export function DietFilter(){
        
     }
     
+    
+    
     return(
         <div>
             <select name="select" onChange={e=> onFilterChange(e)}>
@@ -24,13 +26,14 @@ export function DietFilter(){
                 <option value="ovo vegetarian">ovo vegetarian</option>
                 <option value="lacto ovo">lacto ovo</option>
                 <option value="vegan">vegan</option>
-                <option value="pescetarian">pescetarian</option>
+                <option value="pescatarian">pescetarian</option>
                 <option value="paleolithic">paleolithic</option>
                 <option value="fodmap friendly">low fodmap</option>
                 <option value="whole 30">whole 30</option>
                 <option value="dairy free">dairy free</option>
-                <option value="lacto ovo ">lacto ovo vegetarian</option>
+                <option value="lacto ovo vegetarian">lacto ovo vegetarian</option>
             </select>
+           
         </div>
     )
 };
