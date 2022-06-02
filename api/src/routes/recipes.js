@@ -5,42 +5,73 @@ const {API_KEY,spoonacularUrl,API_KEY1} = process.env;
 const {Recipe,Diet} = require("../db.js")
 const router = Router();
 
-const getapiInfo = async ()=>{
+// const getapiInfo = async ()=>{
     
-    try{
-        const apiInfoUrl = await axios.get(`${spoonacularUrl}/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
-        const {results} = apiInfoUrl.data
-        let apiInfo = await results?.map(response =>{
-            return{
-                id: response.id, 
-                name: response.title,
-                summary: response.summary,
-                healthScore: response.healthScore, 
-                score: response.spoonacularScore,
-                dietTypes:response.diets,
-                dishType: response.dishTypes,
-                vegetarian: response.vegetarian,
-                vegan: response.vegan,
-                glutenFree: response.glutenFree,
-                dairyFree: response.dairyFree,
-                image: response.image,
-                steps: response.analyzedInstructions[0]?.steps.map(x=>{
-                    return{
-                        number:x.number,
-                        step:x.step
-                    };
-                })
+//     try{
+//         const apiInfoUrl = await axios.get(`${spoonacularUrl}/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
+//         const {results} = apiInfoUrl.data
+//         let apiInfo = await results?.map(response =>{
+//             return{
+//                 id: response.id, 
+//                 name: response.title,
+//                 summary: response.summary,
+//                 healthScore: response.healthScore, 
+//                 score: response.spoonacularScore,
+//                 dietTypes:response.diets,
+//                 dishType: response.dishTypes,
+//                 vegetarian: response.vegetarian,
+//                 vegan: response.vegan,
+//                 glutenFree: response.glutenFree,
+//                 dairyFree: response.dairyFree,
+//                 image: response.image,
+//                 steps: response.analyzedInstructions[0]?.steps.map(x=>{
+//                     return{
+//                         number:x.number,
+//                         step:x.step
+//                     };
+//                 })
 
-            };
-        });
+//             };
+//         });
     
-    return apiInfo;
+//     return apiInfo;
 
-    }catch(error){
-        console.log(error);
-        return([]);
-    } ;   
-};
+//     }catch(error){
+//         console.log(error);
+//         return([]);
+//     } ;   
+// };
+
+const getapiInfo = async function (){
+     const resp = await axios.get(`${spoonacularUrl}/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
+     .then(res => res.data.results)
+     let apiInfo = resp?.map(response =>{
+        return{
+                            id: response.id, 
+                            name: response.title,
+                            summary: response.summary,
+                            healthScore: response.healthScore, 
+                            score: response.spoonacularScore,
+                            dietTypes:response.diets,
+                            dishType: response.dishTypes,
+                            vegetarian: response.vegetarian,
+                            vegan: response.vegan,
+                            glutenFree: response.glutenFree,
+                            dairyFree: response.dairyFree,
+                            image: response.image,
+                            steps: response.analyzedInstructions[0]?.steps.map(x=>{
+                                return{
+                                    number:x.number,
+                                    step:x.step
+                                };
+                            })
+            
+                        };
+                    });
+                
+                return apiInfo;
+     
+}
 
 const getDbInfo = async()=>{
     try{

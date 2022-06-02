@@ -1,27 +1,64 @@
 .ul{
     display: flex;
+    width: 650px;
+    height: 45px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.514);
+    border-radius: 50px;
+    align-items: center;
     justify-content: center;
     list-style: none;
+   
 }
-.li{
-    margin-left: 4px;
-    margin-right: 4px;
+.divp{
+    display: flex;
+}
+ul button{
+    width: 50px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    background-color: rgba(240, 248, 255, 0);
+}
+ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #736b5e00;
+    border: none;
+    align-self: center;
+}
+ul li button{
+    background-color: rgba(127, 255, 212, 0);
+    border: none;
+}
+
+.liP {
+    height: 40px;
+    margin-left: 2px;
+    margin-right: 2px;
+    /* background-color: #3704c4b7; */
+    border: none;   
+    border-radius: 50px;  
     
-    
 }
-.buttonprueba1:focus{
-    background-color: rgb(103 44 239);  
+
+ul li:hover{
+   background: #333;
+   color: #fff;
 }
-.buttonprueba:focus{
-    background-color: rgb(103 44 239);  
+
+ul li .active{
+    width: 40px;
+    height: 40px;
+    background: #333;
+    color: #fff;
+    border-radius: 50px;
 }
 
 
 
-.li:hover{
-    transform: scale(1,02);
-}
-.li:focus{
-    border-color: #736b5e;
-    color: #e8e6e3;
-}

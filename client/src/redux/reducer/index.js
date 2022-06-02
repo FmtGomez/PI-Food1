@@ -56,10 +56,10 @@ export function rootReducer(state = initialState,action){
             case ORDER_SCORE:
                 let orderScore = [...state.recipes]
                 orderScore = orderScore.sort((a,b)=>{
-                    if(a.score < b.score){
+                    if(a.healthScore < b.healthScore){
                         return action.payload === "mayor"? -1 : 1
                     }
-                    if(a.score > b.score){
+                    if(a.healthScore > b.healthScore){
                         return action.payload === "mayor"? 1: -1;
                     }
                 });

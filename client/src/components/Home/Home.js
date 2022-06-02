@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getRecipes } from "../../redux/actions";
+import { filterTypeDiet, getRecipes } from "../../redux/actions";
 import { DietFilter } from "../DietFilter/DietFilter";
 import { OrderAlpha } from "../OrderAlphabetic/OrderAlphabetic.js";
 import { OrderScore } from "../OrderScore/OrderScore.js";
 import { Loader } from "../Loader/Loader.js";
 import Recipe from "../Recipe/Recipe.js";
-import  {SearchBar}  from "../SearchBar/SearchBar.js";
+import { SearchBar } from "../SearchBar/SearchBar.js";
 import { Paged } from "../Paged/Paged.js";
 import { Link } from "react-router-dom";
 import "../Home/Home.css"
@@ -33,12 +33,12 @@ export default function Home() {
         setPage(pageNumber);
     };
 
-    const nextpaged = function(){
+    const nextpaged = function () {
         setPage(page + 1)
     }
 
-    const previuspaged = function(){
-        setPage(page-1)
+    const previuspaged = function () {
+        setPage(page - 1)
     }
 
 
@@ -46,13 +46,16 @@ export default function Home() {
         dispatch(getRecipes())
     }, [dispatch]);
 
-
-
+    function onFilterChange(e){
+        e.preventDefault();
+        dispatch(filterTypeDiet(e.target.value));
+    }
+   
     // console.log(recipes)
 
     return (
         <div className="divgral">
-            <nav className="nav">
+            <nav className="hero">
                 <div className="searchBar">
                     <SearchBar />
                 </div>
@@ -68,19 +71,21 @@ export default function Home() {
                 <div>
                     <Link to="/recipe"><button className="button">Create Recipe</button> </Link>
                 </div>
-
             </nav>
-            <div>
-                <Paged recipes={recipes.length} recipesPage={recipesPage} paged={paged} page ={page} nextpaged={nextpaged} previuspaged={previuspaged} />
+               {/* <div>
+                <button className="reload" value="all" onClick={e => onFilterChange(e)}>Reload Home</button>
+               </div> */}
+
+        
+            <div className="paged">
+                <Paged recipes={recipes.length} recipesPage={recipesPage} paged={paged} page={page} nextpaged={nextpaged} previuspaged={previuspaged} />
             </div>
             <div className="recipes">
-            
-                { recipes.length>0? showRecipesPage?.map(recipe => {
-                    return  <Recipe id={recipe.id} name={recipe.name} image={recipe.image} dietType={recipe.dietTypes ? recipe.dietTypes : recipe.diets?.map(el => el.name)} score={recipe.score} key={key++} />
-                         {/* <Link to={"/home/" + recipe.id} key={key++}>
-                         </Link>) */}
 
-                }):<Loader/>}
+                {recipes.length > 0 ? showRecipesPage?.map(recipe => {
+                    return <Recipe id={recipe.id} name={recipe.name} image={recipe.image} dietType={recipe.dietTypes ? recipe.dietTypes : recipe.diets?.map(el => el.name)} score={recipe.healthScore} key={key++} />
+
+                }) : <Loader />}
 
             </div>
         </div>

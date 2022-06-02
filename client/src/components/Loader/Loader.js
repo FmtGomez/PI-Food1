@@ -1,9 +1,8 @@
 import React from "react";
+import "../Loader/Loader.css"
 
 export  function Loader (){
 return(
-    <div>
-        <h2>Cargando...</h2>
-    </div>
+    <div className="food"></div>
 )
 }

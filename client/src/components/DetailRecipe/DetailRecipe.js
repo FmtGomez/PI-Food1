@@ -3,89 +3,89 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { detailsRecipe } from "../../redux/actions/index.js";
 import "../DetailRecipe/DetailRecipe.css"
+import { Loader } from "../Loader/Loader.js";
 
 
-export default function DetailRecipe(props){
-    
+export default function DetailRecipe(props) {
+
     let key = 1
-    const recipeDetails = useSelector(state =>state.recipeDetail)
-  
+    const recipeDetails = useSelector(state => state.recipeDetail)
+
     const id = props.match.params.id
-   
+
     const dispatch = useDispatch();
-    
 
-    useEffect(()=>{
+
+    useEffect(() => {
         dispatch(detailsRecipe(id))
-    },[dispatch,id]);
+    }, [dispatch, id]);
 
 
-    return(
-        
-        <div className="div">
+    return (
+
+        <div className="divgral container">
             {/* {console.log(recipeDetails.map(el =>el))} */}
-                {/* {console.log(recipeDetails)} */}
-    
-            
-            <nav>
+            {/* {console.log(recipeDetails)} */}
+
+
+            <div>
                 <Link to={"/home"}><button className="button">Go Back To Home</button></Link>
-            </nav>
-            
-            <div className="namedetail">          
+            </div>
+            {
+                recipeDetails.name ?
+            <div className="bg">
                 <h2>{recipeDetails.name}</h2>
-            </div>
-
-            <div className="imgdiv">
-                <img className="imge" src={recipeDetails.image } alt="img" />
-            </div>
-
-            <div className="namedetail">
+                <img className="image" src={recipeDetails.image} alt="img" />
                 <h3>Summary</h3>
                 <p>{recipeDetails?.summary?.replace(/<[^>]*>/g, '')}</p>
             </div>
-
-            <div className="namedetail">
-               
+            :<Loader/>}
+            
+            
+            <div className="steps">
                 <h3>Steps</h3>
-                
-                { 
-                  typeof recipeDetails?.steps !== "string"? recipeDetails.steps?.map(e =>{
-                    return(
-                        <li key={key++}>{e.step}</li>
-                    )
-                }):
-                <li key={key++}>{recipeDetails.steps}</li> 
+
+                {
+                    typeof recipeDetails?.steps !== "string" ? recipeDetails.steps?.map(e => {
+                        return (
+                            
+                            <li className="liPr" key={key++}>{e.step}</li>
+                        )
+                    }) :
+                        <li className="liPr" key={key++}>{recipeDetails.steps}</li>
                 }
-                
-           
             </div>
+            
+     
+
             <div className="prueba">
-            <div className="namedetail">
-                <h3>Health Score: {recipeDetails.healthScore} </h3> 
-            </div>
-            <div className="namedetail">
-                { recipeDetails.dishType?.map(el =>{
-                    return(
-                        <h3>Dish Type : {el}</h3>
-                    )
-                })}
+                <div className="namedetail">
+                    <h3>Health Score: {recipeDetails.healthScore} </h3>
+                </div>
+                <div className="namedetail">
+                    {recipeDetails.dishType?.map(el => {
+                        return (
+                            <h3>Dish Type : {el}</h3>
+                        )
+                    })}
+                </div>
+
+                <div className="namedetail">
+                    <h3>Score : {recipeDetails.score}</h3>
+                </div>
+
+                <div className="namedetail">
+                    <h3>Diet Types</h3>
+                    {recipeDetails.dietTypes?.map(el => <li key={key++}>{el.name ? el.name : el}</li>)}
+
+                </div>
+
             </div>
 
-            <div className="namedetail">
-                <h3>Score : {recipeDetails.healthscore}</h3>
-            </div>
-
-            <div className="namedetail">
-                <h3>Diet Types</h3>
-               {recipeDetails.dietTypes?.map(el=> <li key={key++}>{el.name?el.name:el}</li>)}
-             
-            </div>
-
-            </div>
 
         </div>
     )
-    
+
 };
 
 

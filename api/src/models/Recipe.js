@@ -29,13 +29,6 @@ module.exports = (sequelize) => {
     steps:{
       type: DataTypes.STRING,
       allowNull: false,
-      // get(){
-      //   return this.getDataValue("steps").split(", ");
-
-      // },
-      // set(val){
-      //   this.setDataValue("steps", val.join(", "))
-      // }
     },
       image:{
        type: DataTypes.STRING

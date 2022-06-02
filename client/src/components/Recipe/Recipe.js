@@ -12,20 +12,20 @@ export default function Recipe({ name, image, dietType, score,id}) {
     return (
         <div className="card">
             {/* <button onClick={()=> dispatch(remove(id))}>x</button> */}
-             <img className="img" src={image} alt="img" />
            
            <Link  to={"/home/" + id}>
-            <div>
-                <h3 className="name">{name}</h3>
-            </div>
+             <img className="img" src={image} alt="img" />
            </Link>
           
-
-
-            <div className="dietTypes">
-                {dietType?.map(el => <li key={key++}>{el.name ? el.name : el}</li>)}
+            <div className="bg-name-diet">
+                <h3 className="name">{name}</h3>
+           
+                {dietType?.map(el => <li className="diet" key={key++}>{el.name ? el.name : el}</li>)}
                 <p >{`Score: ${score}`}</p>
+         
             </div>
+
+
            
         </div>
     )

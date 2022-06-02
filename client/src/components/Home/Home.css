@@ -1,24 +1,31 @@
 .divgral{
-  background: url(../../img/img.jpg) no-repeat center;
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(../../img/img.jpg);
+  background-size: cover;
+  background-position: center;
   background-attachment: fixed;
-  height: 1700px;
+  height: 100vh;
+  width: 100vw;
+  overflow:auto;
+  /* position: relative; */
   
 }
-.nav{
-  display: flex;
-  padding-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
-  justify-content: center;
-  align-items: center;
+.hero{
+ height: 10vh;
+ width: 100%;
+ background-color: rgba(0, 0, 0, 0.478);
+ display: flex;
+ align-items: center;
+ justify-content: space-around;
+ margin-bottom: 60px;
+ 
 }
 
 .searchBar{
-  margin-right: 5px;
+  margin-right: -200px;
 }
 
 .orderAlpha{
-  margin-left: 10px;
+  margin-left: 200px;
   margin-right: 10px;
 }
 
@@ -31,8 +38,85 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+.paged{
+  display: flex;
+  justify-content: center;
+}
+.reload{
+  margin-left: 10px;
+}
 
-.button{
+:root{
+  --clr-neon: rgb(11, 222, 250);
+  --clr-bg: hsl(323 21% 16%);
+}
+
+*::before,
+*::after{
+  box-sizing: border-box;
+}
+
+.divgral .button{
+  font-size: 1.2rem;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--clr-neon);
+  border: currentColor 0.125em solid;
+  padding: -1em 1em;
+  margin-bottom: 20px;
+  border-radius: 0.80em;
+  
+  
+  text-shadow: 0 0 0.125em hsl(0 0% 100%/0.3), 0 0 0.45em currentColor;
+  box-shadow: inset 0 0 0.5em 0 var(--clr-neon), 0 0 0.5em 0 var(--clr-neon);
+
+  position: relative;
+}
+.divgral .button::before{
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  background: var(--clr-neon);
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.80em;
+
+  transform: perspective(2em)rotateX(40deg) scale(1 , 0.35);
+  filter: blur(1.5em);
+}
+.divgral .button::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 2em 0.5em var(--clr-neon);
+  opacity: 0;
+  transition: opacity 100ms linear;
+  border-radius: 0.80em;
+  
+}
+
+.divgral .button:hover,
+.divgral .button:focus{
+  background: var(--clr-neon);
+  color: var(--clr-bg);
+  text-shadow: none;
+  border-radius: 0.80em;
+}
+
+.divgral .button:hover::after{
+  opacity: 1;
+  border-radius: 0.80em;
+}
+
+
+
+/* .button{
     border-radius: 5px;
     font-size: 16px;
     color: #5412ea;
@@ -45,14 +129,16 @@
 .button:hover{
   color: #fff;
   background-color: gray;
-}
+} */
 .recipes{
+    
     display: flex;
     gap: 20px;
     margin: auto;
     max-width: 1200px;
-    width: 98%;
+     width: 98%; 
     padding: 40px 0;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
 }

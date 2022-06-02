@@ -14,10 +14,11 @@ export  function OrderScore(){
     }
 
     return(
-        <div>
-            <select name="select" onChange={onScoreChange}>
-                <option value="mayor" >menor</option>
-                <option value="menor" >mayor</option>
+        <div className="order-big">
+            <select defaultValue="prueba" name="select" onChange={onScoreChange}>
+                <option disabled value="prueba" >Score</option>
+                <option value="mayor" >Max</option>
+                <option value="menor" >Min</option>
             </select>
 
         </div>

@@ -12,10 +12,16 @@ function validate (input){
     } else if (!patron.test(input.name)){errors.name = "The name cannot contain numbers"}
 
     if(!input.summary) errors.summary = "Complete with comments about your recipe";
-    if(!input.image) errors.image = "Complete with a imagen" 
+    
+    let newimg= input.image.split(".")
+    if(!input.image){ 
+        errors.image = "Complete with a imagen" 
+    }else if(newimg[newimg.length-1] !=="jpg" && newimg[newimg.length-1]!=="png"){errors.image ="Picture required : .png, .jpg"} 
+    
     
     if (input.score < 1 || input.score>100){
         errors.score = "The score must be a number between 1 and 100";
+    
     } else if(!/^([0-9]|[1-9][0-9]|100)$/.test(input.score)){errors.score = "The score must be from 1 to 100"}
     
     if (input.healthScore < 1 || input.healthScore > 100){
@@ -65,12 +71,12 @@ export default function AddRecipe(){
             ...input,
             [e.target.name] : e.target.value
         }));
-        if(allState.find(recipe => recipe.name.toLowerCase() === e.target.value.toLowerCase())){
-            setErrors({
-                ...input,
-                [e.target.name]: 'Recipe is found'
-            })
-        }
+        // if(allState.find(recipe => recipe.name.toLowerCase() === e.target.value.toLowerCase())){
+        //     setErrors({
+        //         ...input,
+        //         [e.target.name]: 'Recipe is found'
+        //     })
+        // }
     };
 
     function handleCheckBox(e){
@@ -79,6 +85,7 @@ export default function AddRecipe(){
         
         if(find >= 0 ){
             newarray.splice(find,1);
+            
         }else{
             newarray.push(e.target.value)
         }
@@ -112,15 +119,16 @@ export default function AddRecipe(){
 
 
     return(
-        <div className="divGral">
+        <div className="divgral">
         {/* {console.log(diets)} */}
             <Link to={"/home"}> <button className="button">Go Back To Home</button> </Link>
-            <h2 className="h2">Create your Recipe</h2>
 
             <form className="form" onSubmit={e => handleSubmit(e)}>
+                <h2 className="h2">Create your Recipe</h2>
                 <div className="prueba12">
-                    <label>Name:</label>
+                    
                     <input
+                        placeholder="Name"
                         type="text"
                         value={input.name}
                         name="name"
@@ -131,20 +139,23 @@ export default function AddRecipe(){
                     )}
                 </div>
                 <div className="prueba12">
-                    <label>Image:</label>
+            
                     <input
+                        placeholder="Image"
                         type="text"
                         value={input.image}
                         name="image"
                         onChange={e =>handleChange(e)}
+                        required
                     />
                      {errors.image && (
                         <p className="errors">{errors.image}</p>
                     )}
                 </div>
-                <div className="prueba1">
-                    <label>Summary:</label>
+                <div className="prueba12">
+                    
                     <input
+                        placeholder="Summary"
                         type="text"
                         value={input.summary}
                         name="summary"
@@ -155,8 +166,9 @@ export default function AddRecipe(){
                     )}
                 </div>
                 <div className="prueba12">
-                    <label>Score:</label>
+                    
                     <input
+                        placeholder="Score"
                         type="text"
                         value={input.score}
                         name="score"
@@ -166,9 +178,10 @@ export default function AddRecipe(){
                         <p className="errors">{errors.score}</p>
                     )}
                 </div>
-                <div className="prueba2">
-                    <label>Health Score:</label>
+                <div className="prueba12">
+
                     <input
+                        placeholder="Health Score"
                         type="text"
                         value={input.healthScore}
                         name="healthScore"
@@ -179,8 +192,9 @@ export default function AddRecipe(){
                     )}
                 </div>
                 <div className="prueba12" >
-                    <label>Steps:</label>
+                    
                     <input
+                        placeholder="Steps"
                         type="text"
                         value={input.steps}
                         name="steps"
@@ -194,7 +208,7 @@ export default function AddRecipe(){
                 
 
                 <div>
-                    <label>Diet Types:</label>
+                    <h3>Diet Types:</h3>
                     
                     {diets.map(el =>{
                         return(
@@ -221,13 +235,8 @@ export default function AddRecipe(){
                 </div>
                 {/* <button type="submit"> Submit Recipe</button> */}
                 <div>  
-
-                    {((input.name !== '') && (!errors.name) && (input.summary !=='')) ?
-                         
-                             <button className="buttonEnd" type='submit'>Create</button>
-                              :  input.name === ''? <p>Name is require</p>
-                              :  <p>Summary is require</p>
-                      }
+                      <button className="buttonEnd" type='submit' disabled={Object.keys(errors).length === 0 ? false : true}>Create</button>
+                        
                   </div> 
                 {/* <Link to="/home"><button className="button">Go back to home</button></Link> */}
 

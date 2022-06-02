@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { useState } from "react";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getRecipeName } from "../../redux/actions";
 import "../SearchBar/SearchBar.css"
 
@@ -12,7 +12,9 @@ export function SearchBar(){
 
     function onSubmit(e){
         e.preventDefault();
-        dispatch(getRecipeName(search))
+        
+        search?dispatch(getRecipeName(search)): alert("oops! empty field")
+       
     };
 
     function onInputChange(e){
@@ -21,10 +23,10 @@ export function SearchBar(){
 
 
     return(
-        <div>
+        <div className="prueba123">
             <form onSubmit={onSubmit}>
-            <input type="text" onChange={onInputChange} value={search}/>
-            <input className="buscar" type="submit" value="Buscar" />
+                <input className="input1" type="text" onChange={onInputChange} value={search} placeholder="Search..."/>
+                <input className="input2" type="submit" value="🔍" />
             </form>
         </div>
     )

@@ -7,20 +7,22 @@ export function Paged({ recipes, paged, recipesPage, nextpaged, previuspaged , p
         pages.push(i);
     };
     return (
-        <nav>
+        
             <ul className="ul">
-                <button disabled={page === 1} className="buttonprueba1" onClick={() => previuspaged()}>previus</button>
+                
+                 <button disabled={page === 1} className="buttonprueba" onClick={() => previuspaged()}>👈 Previus </button>
+             
                 {pages &&
                     pages.map(number => (
-                        <li className="li" key={number}>
-                            <button className="buttonprueba " onClick={() => paged(number)}>{number}</button>
+                        <li className="liP" key={number}>
+                            <button className={page === number && "buttonprueba active"} onClick={() => paged(number)}>{number}</button>
                         </li>
                     ))}
 
-                <button disabled={page >= Math.ceil(recipes / recipesPage)} className="buttonprueba1" onClick={() => nextpaged()}>next</button>
+                <button disabled={page >= Math.ceil(recipes / recipesPage)} className="buttonprueba" onClick={() => nextpaged()}>👉 Next </button>
 
             </ul>
-        </nav>
+        
     )
 }
 

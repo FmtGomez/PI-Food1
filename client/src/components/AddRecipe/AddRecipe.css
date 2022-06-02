@@ -1,17 +1,22 @@
-.divGral{
+/* .divGral{
     background: url(../../img/img.jpg) no-repeat center;
     background-attachment: fixed;
     height: 1000px;
     display: flex;
     flex-direction:column;
     align-items: center;
-}
+} */
 
+/* .divgral{
+    display: flex;
+    
+} */
 .button{
     border-radius: 5px;
     color: #5412ea;
     width: 100px;
     margin-top: 10px;
+    margin-left: 40px;
     height: 50px;
     font-size: 20px;
     background-color: #00000047;
@@ -22,14 +27,22 @@
     background-color: gray;
     cursor: pointer;
 }
+
 .form{
+    display: flex;
+    border-radius: 50px;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-left: 40%;
     align-items: center;
-    background-color: #5312eab9;
+    background-color: rgba(128, 128, 128, 0.521);
     width: 450px;
+    height: 805px;
 }
 
 .h2{
-    color: rgb(115, 0, 247);
+    margin-bottom: 10px;
+    color: rgb(0, 0, 0);
 }
 
 .prueba12{
@@ -38,34 +51,47 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.prueba1{
+
+.prueba12 input{
+    width: 260px;
+    height: 30px;
+    padding-left: 5px;
+    border-radius: 20px;
+    
+}
+
+/* .prueba1{
     margin-left: -25px;
     margin-bottom: 5px;
 }
 .prueba2{
     margin-left: -50px;
     margin-bottom: 5px;
-}
+} */
 
 .errors{
     
     
-    color: rgb(248, 4, 4);
+    color: rgb(160, 16, 16);
 }
 
 .types{
     display: flex;
     align-items: center;
     justify-content: end;
-    margin-right: 180px;
+    margin-right: 80px;
 
+}
+
+.types label{
+    padding-right: 10px;
 }
 
 .buttonEnd{
     border-radius: 5px;
-    color: #260672;
+    color: #000000;
     width: 100px;
-    margin-top: 10px;
+    margin-top: 50px;
     margin-bottom: 10px;
     height: 50px;
     font-size: 20px;
