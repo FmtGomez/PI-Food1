@@ -17,8 +17,8 @@ export  function OrderScore(){
         <div className="order-big">
             <select defaultValue="prueba" name="select" onChange={onScoreChange}>
                 <option disabled value="prueba" >Score</option>
-                <option value="mayor" >Max</option>
-                <option value="menor" >Min</option>
+                <option value="mayor" >Min </option>
+                <option value="menor" >Max</option>
             </select>
 
         </div>

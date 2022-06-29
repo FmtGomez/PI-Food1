@@ -60,5 +60,10 @@ ul li .active{
     border-radius: 50px;
 }
 
+@media (max-width:425px){
+    .liP{
+        margin-left: -15px;
+    }
+}
 
 

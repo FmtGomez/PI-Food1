@@ -10,6 +10,7 @@ import Recipe from "../Recipe/Recipe.js";
 import { SearchBar } from "../SearchBar/SearchBar.js";
 import { Paged } from "../Paged/Paged.js";
 import { Link } from "react-router-dom";
+import Error404 from "../Error404/Error404"
 import "../Home/Home.css"
 
 
@@ -81,11 +82,15 @@ export default function Home() {
                 <Paged recipes={recipes.length} recipesPage={recipesPage} paged={paged} page={page} nextpaged={nextpaged} previuspaged={previuspaged} />
             </div>
             <div className="recipes">
+                {
+                    recipes.length===0?<Error404/>:null
+                }
 
-                {recipes.length > 0 ? showRecipesPage?.map(recipe => {
+                {
+                    recipes.length > 0 ? showRecipesPage?.map(recipe => {
                     return <Recipe id={recipe.id} name={recipe.name} image={recipe.image} dietType={recipe.dietTypes ? recipe.dietTypes : recipe.diets?.map(el => el.name)} score={recipe.healthScore} key={key++} />
 
-                }) : <Loader />}
+                }): <Loader/>}
 
             </div>
         </div>

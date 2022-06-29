@@ -24,7 +24,7 @@ export function SearchBar(){
 
     return(
         <div className="prueba123">
-            <form onSubmit={onSubmit}>
+            <form className="container_form" onSubmit={onSubmit}>
                 <input className="input1" type="text" onChange={onInputChange} value={search} placeholder="Search..."/>
                 <input className="input2" type="submit" value="🔍" />
             </form>

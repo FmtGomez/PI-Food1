@@ -23,7 +23,7 @@ export default function DetailRecipe(props) {
 
     return (
 
-        <div className="divgral container">
+        <div className="divgral container_1">
             {/* {console.log(recipeDetails.map(el =>el))} */}
             {/* {console.log(recipeDetails)} */}
 

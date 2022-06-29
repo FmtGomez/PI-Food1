@@ -92,3 +92,30 @@
 li {
     list-style: none;
 } */
+
+@media (max-width:768px){
+    .container_1{
+        display: block;
+    }
+    .bg{
+        margin-left: 200px;
+    }
+    .steps{
+        margin-left: 200px;
+    }
+    .prueba{
+        margin-left: 300px;
+    }
+}
+
+@media (max-width:425px){
+    .bg{
+        margin-left: 5px;
+    }
+    .steps{
+        margin-left: 5px;
+    }
+    .prueba{
+        margin-left: 100px;
+    }
+}
